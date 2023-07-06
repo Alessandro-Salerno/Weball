@@ -12,7 +12,7 @@
                 password: document.getElementById('password-input').value
             };
 
-            fetch("http://155.94.252.86:8081/register", {
+            fetch("http://155.94.252.86:8081/register-customer", {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'}, 
                 body: JSON.stringify(data)
@@ -25,11 +25,11 @@
     </script>
 </head>
 <body>
-    Username <br>
+    Nome Organizzazione <br>
     <input type="text" id="url-input"> <br>
     Password <br>
     <input type="password" id="password-input">
     <br> <br>
-    <input type="button" id="submit-buton" value="Register" onclick="submitRegistration()">
+    <input type="button" id="submit-buton" value="Registrati" onclick="submitRegistration()">
 </body>
 </html>
