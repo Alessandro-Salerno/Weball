@@ -196,16 +196,16 @@ service.post('/customer/register', (req, res) => {
 service.listen(8081, () => {
     databaseConnection.connect((err) => {
         if (err) throw err;
-//        
-//        databaseConnection.query('CREATE TABLE IF NOT EXISTS customers(domain TEXT, pw TEXT, hits INT);', (e, r) => {
-//            if (e) throw err;
-//            // console.log('Created customers table');
-//        });
-//        
-//        database/Connection.query('CREATE TABLE IF NOT EXISTS user_prefs(firstname TEXT, lastname TEXT, email TEXT, password TEXT, prefs TEXT);', (e, r) => {
-//            if (e) throw err;
-//            // console.log('Created customers table');
-//        });
+        
+        databaseConnection.query('CREATE TABLE IF NOT EXISTS customers(domain TEXT, pw TEXT, hits INT);', (e, r) => {
+            if (e) throw err;
+            // console.log('Created customers table');
+        });
+
+        database/Connection.query('CREATE TABLE IF NOT EXISTS user_prefs(firstname TEXT, lastname TEXT, email TEXT, password TEXT, prefs TEXT);', (e, r) => {
+            if (e) throw err;
+            // console.log('Created customers table');
+        });
     });
 });
 
