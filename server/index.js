@@ -238,7 +238,7 @@ service.get('*', (req, res) => {
     
         res.sendFile(path.join(__dirname, `./service${req.path}`));
         
-        databaseConnection.query('UPDATE customers SET hits TO hits + 1 WHERE domain = ?', domain, (err, result) => {
+        databaseConnection.query('UPDATE customers SET hits = hits + 1 WHERE domain = ?', domain, (err, result) => {
             if (err) throw err;
         });
     });
