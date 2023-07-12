@@ -5,8 +5,7 @@ const mysql = require('mysql2');
 const fs = require('fs');
 const url = require('url');
 
-
-                    // Ugly global variables
+// Ugly global variables
 const service = express();
 const frontend = express();
 
