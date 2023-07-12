@@ -12,7 +12,7 @@ const frontend = express();
 
 const databaseConnection = mysql.createConnection({
     user: 'weball',
-    host: '155.94.252.86',
+    host: 'localhost',
     password: 'WebAll123!',
     database: 'weball'
 });
