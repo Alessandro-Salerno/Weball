@@ -198,12 +198,12 @@ service.listen(8081, () => {
         if (err) throw err;
         
         databaseConnection.query('CREATE TABLE IF NOT EXISTS customers(domain TEXT, pw TEXT, hits INT);', (e, r) => {
-            if (e) throw err;
+            if (e) throw e;
             // console.log('Created customers table');
         });
 
         databaseConnection.query('CREATE TABLE IF NOT EXISTS user_prefs(firstname TEXT, lastname TEXT, email TEXT, password TEXT, prefs TEXT);', (e, r) => {
-            if (e) throw err;
+            if (e) throw e;
             // console.log('Created customers table');
         });
     });
