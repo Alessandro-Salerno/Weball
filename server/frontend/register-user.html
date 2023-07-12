@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weball Registration</title>
+
+    <script>
+        const submitRegistration = () => {
+          const data = {
+            firstname: document.getElementById('fn-input').value,
+            lastname: document.getElementById('ln-input').value,
+            email: document.getElementById('em-input').value,
+            password: document.getElementById('password-input').value
+          };
+
+          fetch("http://127.0.0.1:8081/user/register", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify(data)
+          }).then(res => {
+            return res.json();
+          }).then(response => {
+            alert(`${response.status}: ${response.message}`);
+          });
+        }
+    </script>
+</head>
+<body>
+    First name <br>
+    <input type="text" id="fn-input"> <br>
+    Last name <br>
+    <input type="text" id="ln-input"> <br>
+    E-Mail Address <br>
+    <input type="text" id="em-input"> <br>
+    Password <br>
+    <input type="password" id="pw-input">
+    <br> <br>
+    <input type="button" id="submit-buton" value="Register" onclick="submitRegistration()">
+</body>
+</html>

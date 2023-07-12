@@ -1,0 +1,43 @@
+.weball-inverted {
+  filter: invert(100%);
+}
+
+.weball-gray-scale {
+  filter: grayscale();
+}
+
+.weball-contrast {
+  filter: contrast(200%);
+}
+
+.weball-saturation {
+  filter: saturate(200%);
+}
+
+.weball-brightness {
+  filter: brightness(200%);
+}
+
+.weball-sepia {
+  filter: sepia(50%);
+}
+
+.weball-dyslexia {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+}
+
+.weball-zoom {
+  zoom: 2; 
+  -moz-transform: scale(2); 
+}
+
+.weball-zoom-pointer {
+  cursor: url('http://127.0.0.1:8081/resources/pointer.weball-svg'), auto;
+}
+
+.weball-highlight {
+  filter: contrast(200%);
+  border-style: solid;
+  border-width: 1px;
+}

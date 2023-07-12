@@ -1,0 +1,133 @@
+.invisible {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+#weball-widget {
+    position: absolute;
+    width: 20vw;
+    height: 50%;
+    min-height: 780px;
+    min-width: 210px;
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-radius: 6px;
+    border-color: rgb(200, 200, 200);
+    padding: 16px;
+    gap: 8px 8px;
+    flex-direction: column;
+    right: 50px;
+    bottom: 50px;
+    transition:all 0.2s ease-in-out;
+}
+
+.weball-widget-button:hover {
+    box-shadow:0 0 30px 0 #0000FF;
+    cursor: grab;
+    border-color: black;
+    border-radius: 6px;
+}
+
+#weball-widget-exit-button {
+    background-color: red;
+    color: white;
+    width: 100%;
+    height: 75%;
+}
+
+.weball-widget-button {
+    font-size: 90%;
+    background-color: rgb(220, 220, 220);
+    width: 100%;
+    height: 100%;
+    margin: 4px;
+    border-color: rgb(200, 200, 200);
+    border-style: solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.selected {
+    background-color: blue;
+    color: white;
+}
+
+#weball-banner {
+    border-radius: 6px;
+    height: 220%;
+    background-color: rgb(0, 0, 200);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.weball-centered {
+    font-family: Arial;
+    text-align: center;
+    left: auto;
+    right: auto;
+    margin: 0;
+}
+
+#weball-login-button {
+    border-style: solid;
+    width: 100%;
+    background-color: white;
+    color: rgb(0, 0, 200);
+    border-color: white;
+    border-width: 2px;
+    border-radius: 6px;
+    height: 40%;
+}
+
+#weball-login-button:hover {
+    animation-name: login-animation;
+    animation-delay: 90ms;
+    animation-duration: 270ms;
+    animation-fill-mode: both;
+}
+
+#weball-login-button:not(:hover) {
+    animation-name: login-animation-out;
+    animation-delay: 90ms;
+    animation-duration: 270ms;
+    animation-fill-mode: both;
+}
+
+/*#weball-login-button:after {*/
+/*    animation-name: login-animation-out;*/
+/*    animation-delay: 200ms;*/
+/*    animation-duration: 500ms;*/
+/*}*/
+
+@keyframes login-animation {
+    0% {
+        background-color: white;
+        color: rgb(0, 0, 200);
+    }
+
+    100% {
+        background-color: rgb(0, 0, 200);
+        color: white;
+    }
+}
+
+
+@keyframes login-animation-out {
+    0% {
+        background-color: rgb(0, 0, 200);
+        color: white;
+    }
+
+    100% {
+        background-color: white;
+        color: rgb(0, 0, 200);
+    }
+}
