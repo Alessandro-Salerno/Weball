@@ -108,7 +108,7 @@ const applySettings = (settings) => {
 }
 
 const fetchSettings = (c) => {
-    return fetch("http://155.94.252.86:8081/user/settings/get", {
+    fetch("http://155.94.252.86:8081/user/settings/get", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(c)
@@ -124,7 +124,7 @@ const fetchSettings = (c) => {
             window.location.reload();
         }
 
-        return res.settings;
+        applySettings(res.settings);
     });
 }
 
@@ -151,8 +151,8 @@ const postSettings = () => {
         return res.json();
     }).then(response => {
         if (!response || response.status === 'Failed')
-            alert(response.message)
-//            alert(`Error while posting configuration to remote server`);
+//            alert(response.message)
+            alert(`Error while posting configuration to remote server`);
     });
 }
 
@@ -171,7 +171,7 @@ const onLoad = () => {
     });
 
     if (sessionStorage.getItem('weball_credentials')) {
-        applySettings(fetchSettings(JSON.parse(sessionStorage.getItem('weball_credentials'))));
+        fetchSettings(JSON.parse(sessionStorage.getItem('weball_credentials')));
         return;
     }
 
