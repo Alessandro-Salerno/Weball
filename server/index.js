@@ -82,7 +82,7 @@ service.post('/user/settings/set', (req, res) => {
     }
 
     userLogin(rr.email, rr.password, (user) => {
-        databaseConnection.query('UPDATE user_prefs SET prefs TO ? WHERE email = ?', [JSON.stringify(rr.settings), rr.email], (err, result) => {
+        databaseConnection.query('UPDATE user_prefs SET prefs = ? WHERE email = ?', [JSON.stringify(rr.settings), rr.email], (err, result) => {
             if (err) {
                 res.send({
                     status: 'Failed',
