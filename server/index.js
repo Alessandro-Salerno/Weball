@@ -32,7 +32,7 @@ const checkCustomer = (domain, callback) => {
 }
 
 const checkUser = (email, password, callback) => {
-    databaseConnection.query('SELECT * FROM user_prefs WHERE email = ? AND password = ?', [email, password], (err, result, fields) => {
+    databaseConnection.query('SELECT * FROM user_prefs WHERE email = ?', [email], (err, result, fields) => {
         if (err) throw err;
         callback(result);
     });
@@ -47,10 +47,12 @@ const getDomain = (url) => {
 }
 
 const userLogin = (email, password, res, callback) => {
-    checkUser(email, password, (users) => {
+    checkUser(email, (users) => {
         if (users && users.length > 0)  {
-            callback(users[0]);
-            return;
+            if (users[0].password === password) {
+                callback(users[0]);
+                return;
+            }
         }
         
         res.send({
@@ -124,7 +126,7 @@ service.post('/user/register', (req, res) => {
         return;
     }
 
-    checkUser(rr.email, rr.password, (result) => {
+    checkUser(rr.email, (result) => {
         if (result && result.length > 0) {
             res.send({
                 status: 'Failed',
@@ -133,6 +135,7 @@ service.post('/user/register', (req, res) => {
 
             return;
         }
+
         const values = [rr.firstname, rr.lastname, rr.email, rr.password, '{}'];
         databaseConnection.query('INSERT INTO user_prefs (firstname, lastname, email, password, prefs) VALUES (?, ?, ?, ?, ?)', values, (err, result) => {
             if (err) throw err;
