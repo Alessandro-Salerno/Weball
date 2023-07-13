@@ -129,7 +129,7 @@ const fetchSettings = (c) => {
 }
 
 const postSettings = () => {
-    credentials = sessionStorage.getItem('weball_credentials');
+    credentials = JSON.parse(sessionStorage.getItem('weball_credentials'));
     settings = getCurrentSettings();
 
     if (!credentials) {
