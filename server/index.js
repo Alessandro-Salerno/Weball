@@ -134,7 +134,7 @@ service.post('/user/register', (req, res) => {
             return;
         }
         const values = [rr.firstname, rr.lastname, rr.email, rr.password, '{}'];
-        databaseConnection.query('INSERT INTO customers (firstname, lastname, email, password, prefs) VALUES (?, ?, ?, ?, ?)', values, (err, result) => {
+        databaseConnection.query('INSERT INTO user_prefs (firstname, lastname, email, password, prefs) VALUES (?, ?, ?, ?, ?)', values, (err, result) => {
             if (err) throw err;
 
             res.send({
