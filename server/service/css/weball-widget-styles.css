@@ -58,7 +58,7 @@
 
 #weball-banner {
     border-radius: 6px;
-    height: 220%;
+    height: 30%;
     background-color: rgb(0, 0, 200);
     color: white;
     display: flex;
@@ -66,6 +66,14 @@
     align-items: center;
     justify-content: center;
     padding: 4px;
+}
+
+#weball-buttons {
+    height: 70%;
+    padding: 16px;
+    gap: 8px 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .weball-centered {
