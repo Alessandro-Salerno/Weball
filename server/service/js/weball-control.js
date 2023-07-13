@@ -102,7 +102,7 @@ const getCurrentSettings = () => {
 }
 
 const applySettings = (settings) => {
-    settings.keys.forEach(key => {
+    Object.keys(settings).forEach(key => {
         update(key, settings[key]);
     });
 }
