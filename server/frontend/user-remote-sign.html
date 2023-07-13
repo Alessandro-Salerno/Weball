@@ -8,10 +8,10 @@
     <script>
         const submitRegistration = () => {
           const data = {
-            firstname: document.getElementById('fn-input').value,
-            lastname: document.getElementById('ln-input').value,
-            email: document.getElementById('em-input').value,
-            password: document.getElementById('pw-input').value
+            firstname: document.getElementById('fn-signup').value,
+            lastname: document.getElementById('ln-signup').value,
+            email: document.getElementById('em-signup').value,
+            password: document.getElementById('pw-signup').value
           };
 
           fetch("http://155.94.252.86:8081/user/register", {
@@ -33,8 +33,8 @@
     
         const submitLogin = () => {
           const data = {
-            email: document.getElementById('em-input').value,
-            password: document.getElementById('pw-input').value
+            email: document.getElementById('em-login').value,
+            password: document.getElementById('pw-login').value
           };
           
           fetch("http://155.94.252.86:8081/user/settings/get", {
@@ -60,21 +60,21 @@
 <body>
     <h1>Registrati</h1>
     Nome <br>
-    <input type="text" id="fn-input"> <br>
+    <input type="text" id="fn-signup"> <br>
     Cognome <br>
-    <input type="text" id="ln-input"> <br>
+    <input type="text" id="ln-signup"> <br>
     Indirizzo E-Mail <br>
-    <input type="text" id="em-input"> <br>
+    <input type="text" id="em-signup"> <br>
     Password <br>
-    <input type="password" id="pw-input">
+    <input type="password" id="pw-signup">
     <br> <br>
     <input type="button" id="signup-buton" value="Registrati" onclick="submitRegistration()">
     
     <h1>Accedi</h1>
     <br> Indirizzo E-Mail
-    <input type="text" id="em-input"> <br>
+    <input type="text" id="em-login"> <br>
     <br> </br>Password <br>
-    <input type="password" id="pw-input">
+    <input type="password" id="pw-login">
     <br> <br>
     <input type="button" id="login-buton" value="Accedi" onclick="submitLogin()">
 </body>
