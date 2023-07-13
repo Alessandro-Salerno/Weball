@@ -46,19 +46,26 @@ const getDomain = (url) => {
     catch (e) { }
 }
 
-const userLogin = (email, password, res, callback) => {
+const userLogin = (email, password, res, matches, exists, doesnt_exist) => {
     checkUser(email, (users) => {
         if (users && users.length > 0)  {
             if (users[0].password === password) {
-                callback(users[0]);
+                matches(users[0]);
                 return;
             }
+
+            exists();
+            return;
         }
-        
-        res.send({
-            status: 'Failed',
-            message: 'No such user'
-        });
+
+        doesnt_exist();
+    });
+}
+
+const userNotFound = (res) => {
+    res.send({
+        status: 'Failed',
+        message: 'No such user'
     });
 }
 
@@ -90,8 +97,8 @@ service.post('/user/settings/set', (req, res) => {
                 message: 'Settings updated',
             });
         });
-    });
-})
+    }, () => userNotFound(res), () => userNotFound());
+});
 
 service.post('/user/settings/get', (req, res) => {
     const rr = req.body;
@@ -111,10 +118,17 @@ service.post('/user/settings/get', (req, res) => {
             message: 'Data retreived',
             settings: JSON.parse(user.prefs)
         });
-    });
-})
+    }, () => userNotFound(res), () => userNotFound(res));
+});
 
 service.post('/user/register', (req, res) => {
+    const userAlreadyExists = () => {
+        res.send({
+            status: 'Failed',
+            message: 'User already registered'
+        });
+    }
+
     const rr = req.body;
 
     if (!rr.firstname || !rr.lastname || !rr.email || !rr.password) {
@@ -126,16 +140,7 @@ service.post('/user/register', (req, res) => {
         return;
     }
 
-    checkUser(rr.email, (result) => {
-        if (result && result.length > 0) {
-            res.send({
-                status: 'Failed',
-                message: 'User already registered'
-            });
-
-            return;
-        }
-
+    checkUser(rr.email, userAlreadyExists, userAlreadyExists, () => {
         const values = [rr.firstname, rr.lastname, rr.email, rr.password, '{}'];
         databaseConnection.query('INSERT INTO user_prefs (firstname, lastname, email, password, prefs) VALUES (?, ?, ?, ?, ?)', values, (err, result) => {
             if (err) throw err;
