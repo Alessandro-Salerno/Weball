@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weball Registration</title>
+
+    <script>
+        const submitRegistration = () => {
+          const data = {
+            firstname: document.getElementById('fn-input').value,
+            lastname: document.getElementById('ln-input').value,
+            email: document.getElementById('em-input').value,
+            password: document.getElementById('pw-input').value
+          };
+
+          fetch("http://155.94.252.86:8081/user/register", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify(data)
+          }).then(res => {
+            return res.json();
+          }).then(response => {
+            alert(`${response.status}: ${response.message}`);
+          });
+        }
+    
+        const submitLogin = () => {
+          const data = {
+            email: document.getElementById('em-input').value,
+            password: document.getElementById('pw-input').value
+          };
+          
+          fetch("http://155.94.252.86:8081/user/settings/get", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify(data)
+          }).then(res => {
+            return res.json();
+          }).then(response => {
+            parent.postMessage({ weballLogin: data, weballSettings: response });
+            window.close();
+          });
+        }
+    </script>
+</head>
+<body>
+    <h1>Registrati</h1> <br></br>
+    Nome <br>
+    <input type="text" id="fn-input"> <br>
+    Cognome <br>
+    <input type="text" id="ln-input"> <br>
+    Indirizzo E-Mail <br>
+    <input type="text" id="em-input"> <br>
+    Password <br>
+    <input type="password" id="pw-input">
+    <br> <br>
+    <input type="button" id="signup-buton" value="Registrati" onclick="submitRegistration()">
+    
+    <h1>Accedi</h1>
+    <br> Indirizzo E-Mail
+    <input type="text" id="em-input"> <br>
+    Password <br>
+    <input type="password" id="pw-input">
+    <br><br>
+    <input type="button" id="login-buton" value="Accedi" onclick="submitLogin()">
+</body>
+</html>
