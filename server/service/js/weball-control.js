@@ -151,7 +151,8 @@ const postSettings = () => {
         return res.json();
     }).then(response => {
         if (!response || response.status === 'Failed')
-            alert(`Error while posting configuration to remote server`);
+            alert(response.message)
+//            alert(`Error while posting configuration to remote server`);
     });
 }
 
