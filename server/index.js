@@ -140,7 +140,7 @@ service.post('/user/register', (req, res) => {
         return;
     }
 
-    checkUser(rr.email, userAlreadyExists, userAlreadyExists, () => {
+    checkUser(rr.email, rr.password, userAlreadyExists, userAlreadyExists, () => {
         const values = [rr.firstname, rr.lastname, rr.email, rr.password, '{}'];
         databaseConnection.query('INSERT INTO user_prefs (firstname, lastname, email, password, prefs) VALUES (?, ?, ?, ?, ?)', values, (err, result) => {
             if (err) throw err;
