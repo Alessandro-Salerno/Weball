@@ -7,7 +7,7 @@
 }
 
 #weball-widget {
-    position: absolute;
+    position: fixed;
     width: 20vw;
     height: 50%;
     min-height: 780px;

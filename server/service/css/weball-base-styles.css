@@ -15,7 +15,7 @@
     display: inherit;
     right: 50px;
     bottom: 50px;
-    position: absolute;
+    position: fixed;
     width: 100px;
     height: 100px;
     border-radius: 50%;
