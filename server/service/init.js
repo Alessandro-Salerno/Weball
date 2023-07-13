@@ -15,19 +15,21 @@ const loadStyles = (stylesheet) => {
                 .appendChild(l);
 }
 
-const loadHTML = (documentName, id) => {
+const loadHTML = (documentName, id, cls) => {
     let f = document.createElement('iframe');
     f.id = id;
     f.src = `http://155.94.252.86:8081/html/${documentName}`
 
+    if (cls)
+        f.classList.add(cls);
+
     document.body.appendChild(f);
-    return f;
 }
 
 loadStyles('weball-base-styles.css');
 loadStyles('weball-features-styles.css');
 laodScript('weball-hook.js');
-loadHTML('weball-widget.html', 'weball-content-iframe').classList.add('weball-invisible');
+loadHTML('weball-widget.html', 'weball-content-iframe', 'weball-invisible');
 
 let wb = document.createElement('input');
 wb.type = 'button';
