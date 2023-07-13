@@ -103,7 +103,7 @@ const getCurrentSettings = () => {
 
 const applySettings = (settings) => {
     Object.keys(settings).forEach(key => {
-        update(key, settings[key]);
+        update(key, setClass(settingButtonMap.get(key), 'selected', settings[key]));
     });
 }
 
