@@ -25,7 +25,7 @@
             return response;
           }).then(response => {
             if (response.status === 'Success') {
-              parent.postMessage({ weballLogin: data, weballSettings: response.settings });
+              parent.postMessage({ weballLogin: data, weballSettings: response.settings }, '*');
               window.close();
             }
           });
@@ -51,7 +51,7 @@
 
             return response;
           }).then(response => {
-            parent.postMessage({ weballLogin: data, weballSettings: response.settings });
+            parent.postMessage({ weballLogin: data, weballSettings: response.settings }, '*');
             window.close();
           });
         }
