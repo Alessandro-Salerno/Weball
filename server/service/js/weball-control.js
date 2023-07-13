@@ -119,7 +119,7 @@ const fetchSettings = (c) => {
             alert('Error while fetching remote configuration');
 
             if (res.message === 'No such user')
-                sessionStorage.removeItem('weball_credentials');
+                localStorage.removeItem('weball_credentials');
 
             window.location.reload();
         }
@@ -129,11 +129,11 @@ const fetchSettings = (c) => {
 }
 
 const postSettings = () => {
-    credentials = JSON.parse(sessionStorage.getItem('weball_credentials'));
+    credentials = JSON.parse(localStorage.getItem('weball_credentials'));
     settings = getCurrentSettings();
 
     if (!credentials) {
-        sessionStorage.setItem('weball_settings', JSON.stringify(settings));
+        localStorage.setItem('weball_settings', JSON.stringify(settings));
         return;
     }
 
@@ -164,17 +164,17 @@ const onLoad = () => {
             return;
 
         credentials = content.weballLogin;
-        sessionStorage.setItem('weball_credentials', JSON.stringify(credentials));
+        localStorage.setItem('weball_credentials', JSON.stringify(credentials));
 
         if (content.weballSettings)
             applySettings(content.weballSettings);
     });
 
-    if (sessionStorage.getItem('weball_credentials')) {
-        fetchSettings(JSON.parse(sessionStorage.getItem('weball_credentials')));
+    if (localStorage.getItem('weball_credentials')) {
+        fetchSettings(JSON.parse(localStorage.getItem('weball_credentials')));
         return;
     }
 
-    if (sessionStorage.getItem('weball_settings'))
-        applySettings(JSON.parse(sessionStorage.getItem('weball_settings')));
+    if (localStorage.getItem('weball_settings'))
+        applySettings(JSON.parse(localStorage.getItem('weball_settings')));
 }
