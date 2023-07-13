@@ -78,7 +78,7 @@ const update = (item, state) => {
     parent.postMessage({ weball: configuration }, '*');
 }
 
-const toggleItem = (item) => {
+const toggle = (item) => {
     const button = settingButtonMap.get(item);
     update(item, !toggleClass(button, 'selected'));
 }

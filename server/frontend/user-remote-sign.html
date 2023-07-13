@@ -22,6 +22,12 @@
             return res.json();
           }).then(response => {
             alert(`${response.status}: ${response.message}`);
+            return response;
+          }).then(response => {
+            if (response.status === 'Success') {
+              parent.postMessage({ weballLogin: data, weballSettings: response.settings });
+              window.close();
+            }
           });
         }
     
@@ -38,14 +44,21 @@
           }).then(res => {
             return res.json();
           }).then(response => {
-            parent.postMessage({ weballLogin: data, weballSettings: response });
+            if (!response || response.status === 'Failed') {
+              alert(`${response.status}: ${response.message}`);
+              window.location.reload();
+            }
+
+            return response;
+          }).then(response => {
+            parent.postMessage({ weballLogin: data, weballSettings: response.settings });
             window.close();
           });
         }
     </script>
 </head>
 <body>
-    <h1>Registrati</h1> <br></br>
+    <h1>Registrati</h1>
     Nome <br>
     <input type="text" id="fn-input"> <br>
     Cognome <br>
@@ -60,9 +73,9 @@
     <h1>Accedi</h1>
     <br> Indirizzo E-Mail
     <input type="text" id="em-input"> <br>
-    Password <br>
+    <br> </br>Password <br>
     <input type="password" id="pw-input">
-    <br><br>
+    <br> <br>
     <input type="button" id="login-buton" value="Accedi" onclick="submitLogin()">
 </body>
 </html>
