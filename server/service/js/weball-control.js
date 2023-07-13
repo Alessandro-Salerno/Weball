@@ -133,7 +133,7 @@ const postSettings = () => {
     settings = getCurrentSettings();
 
     if (!credentials) {
-        sessionStorage.setItem('weball_settings', settings);
+        sessionStorage.setItem('weball_settings', JSON.stringify(settings));
         return;
     }
 
@@ -170,10 +170,10 @@ const onLoad = () => {
     });
 
     if (sessionStorage.getItem('weball_credentials')) {
-        applySettings(fetchSettings(sessionStorage.getItem('weball_credentials')));
+        applySettings(fetchSettings(JSON.parse(sessionStorage.getItem('weball_credentials'))));
         return;
     }
 
     if (sessionStorage.getItem('weball_settings'))
-        applySettings(sessionStorage.getItem('weball_settings'));
+        applySettings(JSON.parse(sessionStorage.getItem('weball_settings')));
 }
