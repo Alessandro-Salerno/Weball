@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="http://155.94.252.86:8081/css/weball-widget-styles.css">
 </head>
-<body>
+<body onload="onLoad()">
     <script type="application/javascript" src="http://155.94.252.86:8081/js/weball-control.js"></script>
     <div id="weball-widget" class="flex">
         <div id="weball-banner">
@@ -17,17 +17,17 @@
         </div>
 
         <div id="weball-buttons">
-            <input type="button" class="weball-widget-button" id="inverti-colori" value="INVERTI COLORI" onclick="toggleInvertiColori()">
-            <input type="button" class="weball-widget-button" id="scala-di-grigi" value="SCALA DI GRIGI" onclick="toggleScalaDiGrigi()">
-            <input type="button" class="weball-widget-button" id="contrasto" value="CONTRASTO" onclick="toggleContrasto()">
-            <input type="button" class="weball-widget-button" id="saturazione" value="SATURAZIONE" onclick="toggleSaturazione()">
-            <input type="button" class="weball-widget-button" id="luminosita" value="LUMINOSITÀ" onclick="toggleLuminosita()">
-            <input type="button" class="weball-widget-button" id="epilessia" value="EPILESSIA" onclick="toggleEpilessia()">
-            <input type="button" class="weball-widget-button" id="evidenzia-link" value="EVIDENZIA LINK" onclick="toggleEvidenziaLink()">
-            <input type="button" class="weball-widget-button" id="caratteri-dislessia" value="CARATTERI DISLESSIA" onclick="toggleCaratteriDislessia()">
-            <input type="button" class="weball-widget-button" id="cursore-grande" value="CURSORE GRANDE" onclick="toggleCursoreGrande()">
-            <input type="button" class="weball-widget-button" id="zoom" value="ZOOM" onclick="toggleZoom()">
-            <input type="button" class="weball-widget-button" id="silenzia-suoni" value="SILENZIA SUONI" onclick="toggleMutaAudio()">
+            <input type="button" class="weball-widget-button" id="inverti-colori" value="INVERTI COLORI" onclick="toggle('inverted')">
+            <input type="button" class="weball-widget-button" id="scala-di-grigi" value="SCALA DI GRIGI" onclick="toggle('grayScale')">
+            <input type="button" class="weball-widget-button" id="contrasto" value="CONTRASTO" onclick="toggle('contrast')">
+            <input type="button" class="weball-widget-button" id="saturazione" value="SATURAZIONE" onclick="toggle('saturation')">
+            <input type="button" class="weball-widget-button" id="luminosita" value="LUMINOSITÀ" onclick="toggle('brightness')">
+            <input type="button" class="weball-widget-button" id="epilessia" value="EPILESSIA" onclick="toggle('sepia')">
+            <input type="button" class="weball-widget-button" id="evidenzia-link" value="EVIDENZIA LINK" onclick="toggle('highlightLinks')">
+            <input type="button" class="weball-widget-button" id="caratteri-dislessia" value="CARATTERI DISLESSIA" onclick="toggle('dyslexia')">
+            <input type="button" class="weball-widget-button" id="cursore-grande" value="CURSORE GRANDE" onclick="toggle('zoomPointer')">
+            <input type="button" class="weball-widget-button" id="zoom" value="ZOOM" onclick="toggle('zoom')">
+            <input type="button" class="weball-widget-button" id="silenzia-suoni" value="SILENZIA SUONI" onclick="toggle('muteSounds')">
             <input type="button" class="weball-widget-button" id="weball-widget-exit-button" value="CHIUDI" onclick="noWeball()">
         </div>
     </div>
