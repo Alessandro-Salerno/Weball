@@ -34,7 +34,7 @@ const checkCustomer = (domain, callback) => {
 const checkUser = (email, password, callback) => {
     databaseConnection.query('SELECT * FROM user_prefs WHERE email = ? AND password = ?', [email, password], (err, result, fields) => {
         if (err) throw err;
-        callback(result)
+        callback(result);
     });
 }
 
@@ -124,7 +124,7 @@ service.post('/user/register', (req, res) => {
         return;
     }
 
-    checkUser(rr.email, (result) => {
+    checkUser(rr.email, rr.password, (result) => {
         if (result && result.length > 0) {
             res.send({
                 status: 'Failed',
