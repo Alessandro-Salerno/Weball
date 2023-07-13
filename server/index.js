@@ -31,7 +31,7 @@ const checkCustomer = (domain, callback) => {
     });
 }
 
-const checkUser = (email, password, callback) => {
+const checkUser = (email, callback) => {
     databaseConnection.query('SELECT * FROM user_prefs WHERE email = ?', [email], (err, result, fields) => {
         if (err) throw err;
         callback(result);
