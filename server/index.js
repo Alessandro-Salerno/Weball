@@ -46,7 +46,7 @@ const getDomain = (url) => {
     catch (e) { }
 }
 
-const userLogin = (email, password, res, matches, exists, doesnt_exist) => {
+const userLogin = (email, password, matches, exists, doesnt_exist) => {
     checkUser(email, (users) => {
         if (users && users.length > 0)  {
             if (users[0].password === password) {
@@ -81,7 +81,7 @@ service.post('/user/settings/set', (req, res) => {
         return;
     }
 
-    userLogin(rr.email, rr.password, res, (user) => {
+    userLogin(rr.email, rr.password, (user) => {
         databaseConnection.query('UPDATE user_prefs SET prefs TO ? WHERE email = ?', [JSON.stringify(rr.settings), rr.email], (err, result) => {
             if (err) {
                 res.send({
@@ -112,7 +112,7 @@ service.post('/user/settings/get', (req, res) => {
         return;
     }
     
-    userLogin(rr.email, rr.password, res, (user) => {
+    userLogin(rr.email, rr.password, (user) => {
         res.send({
             status: 'Success',
             message: 'Data retreived',
@@ -140,7 +140,7 @@ service.post('/user/register', (req, res) => {
         return;
     }
 
-    checkUser(rr.email, rr.password, userAlreadyExists, userAlreadyExists, () => {
+    userLogin(rr.email, rr.password, userAlreadyExists, userAlreadyExists, () => {
         const values = [rr.firstname, rr.lastname, rr.email, rr.password, '{}'];
         databaseConnection.query('INSERT INTO user_prefs (firstname, lastname, email, password, prefs) VALUES (?, ?, ?, ?, ?)', values, (err, result) => {
             if (err) throw err;
