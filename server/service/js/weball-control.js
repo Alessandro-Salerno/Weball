@@ -163,7 +163,7 @@ const onLoad = () => {
             return;
 
         credentials = content.weballLogin;
-        sessionStorage.setItem('weball_credentials', credentials);
+        sessionStorage.setItem('weball_credentials', JSON.stringify(credentials));
 
         if (content.weballSettings)
             applySettings(content.weballSettings);
