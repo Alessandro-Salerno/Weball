@@ -81,6 +81,7 @@ const update = (item, state) => {
 const toggle = (item) => {
     const button = settingButtonMap.get(item);
     update(item, !toggleClass(button, 'selected'));
+    postSettings();
 }
 
 const noWeball = () => {
@@ -130,6 +131,11 @@ const fetchSettings = (c) => {
 const postSettings = () => {
     credentials = sessionStorage.getItem('weball_credentials');
     settings = getCurrentSettings();
+
+    if (!credentials) {
+        sessionStorage.setItem('weball_settings', settings);
+        return;
+    }
 
     const data = {
         email: credentials.email,
